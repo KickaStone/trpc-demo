@@ -1,0 +1,33 @@
+syntax = "proto3";
+package trpc.demo.user;
+
+option go_package = "github.com/kickastone/trpc-demo/proto/user";
+
+import "common/metadata.proto";
+
+message GetAccountByUserNameRequest {
+    common.Metadata metadata = 1;
+    string username = 2;
+}
+
+message GetAccountByUserNameResponse {
+    int32 err_code = 1;
+    string err_msg = 2;
+    Data data = 3;
+
+    message Data {
+        UserInfo user_info = 1;
+    }
+}
+
+message UserInfo {
+    string user_id = 1;
+    string username = 2;
+    string password_hash = 3;
+    string nickname = 4;
+    int64 create_ts_sec = 5;
+}
+
+service User {
+    rpc GetAccountByUserName(GetAccountByUserNameRequest) returns (GetAccountByUserNameResponse);
+}

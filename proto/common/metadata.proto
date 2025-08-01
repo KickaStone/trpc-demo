@@ -1,0 +1,8 @@
+syntax = "proto3";
+package trpc.demo.common;
+
+option go_package = "github.com/kickastone/trpc-demo/proto/common";
+
+message Metadata {
+    string trace_id = 1;
+}

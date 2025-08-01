@@ -1,0 +1,28 @@
+syntax = "proto3";
+package trpc.demo.auth;
+
+option go_package = "github.com/kickastone/trpc-demo/proto/auth";
+
+import "common/metadata.proto";
+
+message LoginRequest {
+    common.Metadata metadata = 1;
+    string username = 2;
+    string password = 3;
+}
+
+message LoginResponse {
+    int32 err_code = 1;
+    string err_msg = 2;
+    string data = 3;
+
+    message Data {
+        string id_ticket = 1;
+    }
+}
+
+
+// Auth Http 
+service Auth {
+    rpc Login(LoginRequest) returns (LoginResponse); // @alias=/demo/auth/Login
+}
