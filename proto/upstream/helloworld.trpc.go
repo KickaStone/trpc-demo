@@ -42,11 +42,11 @@ func HelloServiceService_SayHello_Handler(svr interface{}, ctx context.Context, 
 
 // HelloServiceServer_ServiceDesc descriptor for server.RegisterService.
 var HelloServiceServer_ServiceDesc = server.ServiceDesc{
-	ServiceName: "trpc.demo.upstream.HelloService",
+	ServiceName: "trpc.demo.helloworld.HelloService",
 	HandlerType: ((*HelloServiceService)(nil)),
 	Methods: []server.Method{
 		{
-			Name: "/trpc.demo.upstream.HelloService/SayHello",
+			Name: "/trpc.demo.helloworld.HelloService/SayHello",
 			Func: HelloServiceService_SayHello_Handler,
 		},
 	},
@@ -90,10 +90,10 @@ var NewHelloServiceClientProxy = func(opts ...client.Option) HelloServiceClientP
 func (c *HelloServiceClientProxyImpl) SayHello(ctx context.Context, req *HelloRequest, opts ...client.Option) (*HelloResponse, error) {
 	ctx, msg := codec.WithCloneMessage(ctx)
 	defer codec.PutBackMessage(msg)
-	msg.WithClientRPCName("/trpc.demo.upstream.HelloService/SayHello")
+	msg.WithClientRPCName("/trpc.demo.helloworld.HelloService/SayHello")
 	msg.WithCalleeServiceName(HelloServiceServer_ServiceDesc.ServiceName)
 	msg.WithCalleeApp("demo")
-	msg.WithCalleeServer("upstream")
+	msg.WithCalleeServer("helloworld")
 	msg.WithCalleeService("HelloService")
 	msg.WithCalleeMethod("SayHello")
 	msg.WithSerializationType(codec.SerializationTypePB)

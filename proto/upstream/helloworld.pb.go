@@ -114,13 +114,13 @@ var File_helloworld_proto protoreflect.FileDescriptor
 
 const file_helloworld_proto_rawDesc = "" +
 	"\n" +
-	"\x10helloworld.proto\x12\x12trpc.demo.upstream\"\"\n" +
+	"\x10helloworld.proto\x12\x14trpc.demo.helloworld\"\"\n" +
 	"\fHelloRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\")\n" +
 	"\rHelloResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2_\n" +
-	"\fHelloService\x12O\n" +
-	"\bSayHello\x12 .trpc.demo.upstream.HelloRequest\x1a!.trpc.demo.upstream.HelloResponseB0Z.github.com/kickastone/trpc-demo/proto/upstreamb\x06proto3"
+	"\amessage\x18\x01 \x01(\tR\amessage2c\n" +
+	"\fHelloService\x12S\n" +
+	"\bSayHello\x12\".trpc.demo.helloworld.HelloRequest\x1a#.trpc.demo.helloworld.HelloResponseB0Z.github.com/kickastone/trpc-demo/proto/upstreamb\x06proto3"
 
 var (
 	file_helloworld_proto_rawDescOnce sync.Once
@@ -136,12 +136,12 @@ func file_helloworld_proto_rawDescGZIP() []byte {
 
 var file_helloworld_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_helloworld_proto_goTypes = []any{
-	(*HelloRequest)(nil),  // 0: trpc.demo.upstream.HelloRequest
-	(*HelloResponse)(nil), // 1: trpc.demo.upstream.HelloResponse
+	(*HelloRequest)(nil),  // 0: trpc.demo.helloworld.HelloRequest
+	(*HelloResponse)(nil), // 1: trpc.demo.helloworld.HelloResponse
 }
 var file_helloworld_proto_depIdxs = []int32{
-	0, // 0: trpc.demo.upstream.HelloService.SayHello:input_type -> trpc.demo.upstream.HelloRequest
-	1, // 1: trpc.demo.upstream.HelloService.SayHello:output_type -> trpc.demo.upstream.HelloResponse
+	0, // 0: trpc.demo.helloworld.HelloService.SayHello:input_type -> trpc.demo.helloworld.HelloRequest
+	1, // 1: trpc.demo.helloworld.HelloService.SayHello:output_type -> trpc.demo.helloworld.HelloResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
