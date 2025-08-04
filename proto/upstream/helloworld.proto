@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package trpc.demo.helloworld;
+package trpc.demo.upstream;
 
 option go_package = "github.com/kickastone/trpc-demo/proto/upstream";
 

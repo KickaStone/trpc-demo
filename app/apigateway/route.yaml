@@ -1,0 +1,16 @@
+router: # 路由配置
+  - method: /greeting # 正则路由
+    id: "path:/greeting"  # 路由id用来表示一个路由，因为method会重复
+    target_service: # 上游服务
+      - service: trpc.demo.helloworld.HelloService # 服务名称 对应client配置里的name
+        weight: 10 # 服务权重，权重之和不能为0
+        rewrite: /trpc.demo.helloworld.HelloService/SayHello
+client: # 上游服务配置, 与trpc协议一致
+  - name: trpc.demo.helloworld.HelloService
+    namespace: Development
+    target: ip://127.0.0.1:8001
+    env_name: f81a848f
+    network: tcp
+    timeout: 1800
+    protocol: trpc
+    disable_servicerouter: true

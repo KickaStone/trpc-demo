@@ -1,0 +1,27 @@
+global:
+  namespace: Development
+  env_name: test
+  conf_provider: file
+
+server:
+  service:
+    - name: trpc.http.service
+      ip: 127.0.0.1
+      port: 8001
+      network: tcp
+      protocol: fasthttp
+      timeout: 1800
+
+plugin:
+  log:
+    default:
+      - writer: console
+        level: debug
+      - writer: file
+        level: info
+        writer_config:
+          filename: ./logs/trpc_apigateway.log
+          max_size: 10
+          max_backups: 10
+          max_age: 7
+          compress: true
