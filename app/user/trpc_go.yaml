@@ -1,0 +1,13 @@
+server:
+  service:
+    - name: trpc.demo.user.User
+      ip: 127.0.0.1
+      port: 8001
+      network: tcp
+      protocol: trpc
+      timeout: 1800
+
+client:                                     
+  service:                                         
+    - name: trpc.mysql.user.User
+      target: dsn://root:password123@tcp(127.0.0.1:3306)/gochat?charset=utf8mb4&parseTime=True

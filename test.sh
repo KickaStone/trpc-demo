@@ -1,0 +1,1 @@
+curl http://127.0.0.1:8000/demo/auth/Login?password=123&username=test

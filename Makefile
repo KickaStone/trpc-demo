@@ -15,8 +15,10 @@ servers: $(SERVERS)
 
 .PHONY: $(SERVERS)
 $(SERVERS):
-	@echo "Building server: $@"
-	@cd $@ && make build
+	@echo "Building server: $@..."
+	@mkdir -p bin && touch bin/.gitignore
+	@go mod tidy && go build ./app/$@/
+	@mv $@ bin/ && echo Done
 
 .PHONY: pb
 pb: $(PB_DIR_TGTS)
