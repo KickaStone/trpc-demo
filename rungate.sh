@@ -1,0 +1,1 @@
+./bin/apigateway -conf=./app/apigateway/trpc_go.yaml -router=./app/apigateway/router.yaml

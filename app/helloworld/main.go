@@ -4,8 +4,8 @@ import (
 	"context"
 
 	helloworld "github.com/kickastone/trpc-demo/proto/upstream"
-	"trpc.group/trpc-go/tnet/log"
 	"trpc.group/trpc-go/trpc-go"
+	"trpc.group/trpc-go/trpc-go/log"
 )
 
 type HelloworldServiceImpl struct{}

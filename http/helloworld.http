@@ -1,1 +1,5 @@
 GET http://127.0.0.1:8001/trpc.demo.helloworld.HelloService/SayHello?name=trpc
+
+###
+
+GET http://127.0.0.1:8000/greeting?name=trpc

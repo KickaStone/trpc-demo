@@ -16,7 +16,6 @@ servers: $(SERVERS)
 .PHONY: $(SERVERS)
 $(SERVERS):
 	@echo "Building server: $@..."
-	@mkdir -p bin && touch bin/.gitignore
 	@go mod tidy && go build ./app/$@/
 	@mv $@ bin/ && echo Done
 

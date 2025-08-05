@@ -7,21 +7,32 @@ server:
   service:
     - name: trpc.http.service
       ip: 127.0.0.1
-      port: 8001
+      port: 8000
       network: tcp
       protocol: fasthttp
       timeout: 1800
 
-plugin:
+plugins:
   log:
     default:
       - writer: console
-        level: debug
+        level: fatal       # 标准输出我一般就不打日志了, 只保留严重异常
+        formatter: console
       - writer: file
-        level: info
+        level: debug       # 本地文件的日志级别看情况, 调试 / 测试用 debug, 正常线上环境用 info, 如果日志量太大则使用 warn 或 error
+        formatter: json    # 文件日志我喜欢用 JSON, 便于各种日志采集器采集
+        formatter_config:  # 格式化配置
+          time_fmt: 2006-01-02 15:04:05  # 日期格式化, 与 go time 的格式化格式相同
+          time_key: time   # 日志时间字段名称，不填默认"T"，填 "none" 可禁用此字段
+          level_key: level # 日志级别字段名称，不填默认"L"，填 "none" 可禁用此字段
+          name_key: none   # 日志名称字段名称，不填默认"N"，填 "none" 可禁用此字段
+          caller_key: caller   # 日志调用方字段名称，不填默认"C"，填 "none" 可禁用此字段
+          message_key: message # 日志消息体字段名称，不填默认"M"，填 "none" 可禁用此字段
+          stacktrace_key: stack_trace  # 日志堆栈字段名称，不填默认"S"，填 "none" 可禁用此字段
         writer_config:
-          filename: ./logs/trpc_apigateway.log
-          max_size: 10
-          max_backups: 10
-          max_age: 7
-          compress: true
+          log_path: ./log/   # 表示日志放在哪个目录下
+          filename: trpc.log # 表示日志文件的基础名称
+          write_mode: 2      # 日志写入模式，1-同步，2-异步，3-极速 (异步丢弃), 不配置默认异步模式
+          roll_type: size    # 文件滚动类型，time 为按时间滚动, size 表示按文件大小滚动
+          max_size: 1000     # 单位: MB
+          max_backups: 10    # 最大日志文件数, 超出则自动删除
